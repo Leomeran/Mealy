@@ -2,7 +2,6 @@ package com.mealy;
 
 public class Reminders {
     /*
-
     binding.addMealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
