@@ -1,0 +1,14 @@
+<resources>
+    <!-- Main activity -->
+    <string name="app_name">Mealy</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Meal list fragment-->
+    <string name="meal_list_fragment_label">Liste des plats</string>
+    <string name="add_meal_button_description">Open the meal editor</string>
+
+    <!-- Meal editor fragment-->
+    <string name="meal_editor_fragment_add_label">Ajouter un plat</string>
+    <string name="meal_editor_fragment_edit_label">Editer un plat</string>
+    <string name="save">Sauvegarder</string>
+</resources>

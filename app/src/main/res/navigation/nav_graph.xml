@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MealListFragment">
+
+    <fragment
+        android:id="@+id/MealListFragment"
+        android:name="com.mealy.MealListFragment"
+        android:label="@string/meal_list_fragment_label"
+        tools:layout="@layout/fragment_meal_list">
+
+        <action
+            android:id="@+id/action_meal_list_to_meal_editor"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.mealy.MealEditorFragment"
+        android:label="@string/meal_editor_fragment_add_label"
+        tools:layout="@layout/fragment_meal_editor">
+
+        <action
+            android:id="@+id/action_meal_editor_to_meal_list"
+            app:destination="@id/MealListFragment" />
+    </fragment>
+</navigation>
