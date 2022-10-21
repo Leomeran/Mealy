@@ -1,7 +1,6 @@
 package com.mealy.utils;
 
 import android.content.Context;
-import android.os.Environment;
 
 import com.mealy.data.Meal;
 
@@ -14,11 +13,11 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 
 public class XmlManager {
-    private String _saveFileName = "";
+    private String _saveFileName;
     private Context _context;
 
     public XmlManager() {
-        _saveFileName = Environment.getDataDirectory() + "/Mealy/mealList";
+        _saveFileName = /*Environment.getDataDirectory() + */"/Mealy/mealList";
         _context = Manager.getInstance().getContext();
     }
 
@@ -36,7 +35,7 @@ public class XmlManager {
     }
 
     public void loadMeals(){
-        File file = new File(_saveFileName);
+        File file = new File(getContext().getFilesDir(), _saveFileName);
         //Check if the file exists
         if(!file.exists()){
             //Create it if it doesn't exist

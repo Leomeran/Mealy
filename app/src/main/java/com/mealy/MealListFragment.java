@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,7 +15,9 @@ import com.mealy.databinding.FragmentMealListBinding;
 import com.mealy.utils.Manager;
 
 public class MealListFragment extends Fragment {
-
+    //View elements
+    ListView _mealListView;
+    //Variables
     private FragmentMealListBinding binding;
 
     @Override
@@ -26,6 +29,8 @@ public class MealListFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        findViewElements(view);
 
         binding.addMealButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +48,10 @@ public class MealListFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void findViewElements(View view){
+        _mealListView = (ListView) view.findViewById(R.id.meal_list_listview);
     }
 
 }
