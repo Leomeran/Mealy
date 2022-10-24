@@ -32,10 +32,10 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
         }
 
         //UI elements
-        TextView mealTitleTewtView = convertView.findViewById(R.id.meal_title_textview);
+        TextView mealTitleTextView = convertView.findViewById(R.id.meal_title_textview);
 
         //Initialization
-        mealTitleTewtView.setText(meal.getTitle());
+        mealTitleTextView.setText(meal.getTitle());
 
         return convertView;
     }

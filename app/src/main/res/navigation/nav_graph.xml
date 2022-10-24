@@ -13,12 +13,11 @@
 
         <action
             android:id="@+id/action_meal_list_to_meal_editor"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/MealEditorFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/MealEditorFragment"
         android:name="com.mealy.MealEditorFragment"
-        android:label="@string/meal_editor_fragment_add_label"
         tools:layout="@layout/fragment_meal_editor">
 
         <action

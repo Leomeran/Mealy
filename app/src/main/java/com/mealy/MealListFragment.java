@@ -37,9 +37,13 @@ public class MealListFragment extends Fragment {
         _mealListAdapter = new MealListAdapter(getContext(), Manager.getInstance().getMeals());
         _binding.mealListListview.setAdapter(_mealListAdapter);
 
+        //Bindings
         _binding.mealListListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Manager.getInstance().setMealIndex(i);
+                Manager.getInstance().setIsEditing(true);
+                ((MainActivity)getActivity()).upateTtitle();
                 goToMealEditor();
             }
         });
@@ -47,6 +51,8 @@ public class MealListFragment extends Fragment {
         _binding.addMealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Manager.getInstance().setIsEditing(false);
+                ((MainActivity)getActivity()).upateTtitle();
                 goToMealEditor();
             }
         });

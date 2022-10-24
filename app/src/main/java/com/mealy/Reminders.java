@@ -11,4 +11,9 @@ public class Reminders {
         });
      */
 
+
+    /*
+    IN FRAGMENT: onResume is called everytime the fragment is navigated to or initialized!
+     */
+
 }

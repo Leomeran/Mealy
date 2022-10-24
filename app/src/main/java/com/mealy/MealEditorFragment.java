@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.mealy.data.Meal;
 import com.mealy.databinding.FragmentMealEditorBinding;
 import com.mealy.utils.Manager;
 
@@ -18,7 +17,7 @@ public class MealEditorFragment extends Fragment {
     //Objects
     private FragmentMealEditorBinding binding;
     //View elements
-    private TextView _mealTitlteTextView;
+    private TextView _mealTitleTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,18 +28,17 @@ public class MealEditorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //UI
         findViewElements(view);
-        init();
+        if(Manager.getInstance().isEditing()){
+            init();
+        }
 
+        //Bindings
         binding.buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(MealEditorFragment.this).navigate(R.id.action_meal_editor_to_meal_list);
-
-                Meal meal = new Meal();
-                meal.setTitle("Meal n°" + Manager.getInstance().getMeals().size());
-                Manager.getInstance().getMeals().add(meal);
-                //Manager.getInstance().getXmlManager().saveMeals();
             }
         });
     }
@@ -53,11 +51,15 @@ public class MealEditorFragment extends Fragment {
 
     //FUNCTIONS
     public void findViewElements(View view){
-        _mealTitlteTextView = (TextView) view.findViewById(R.id.meal_editor_title_textview);
+        _mealTitleTextView = (TextView) view.findViewById(R.id.meal_editor_title_textview);
     }
 
     private void init() {
-        _mealTitlteTextView.setText(Manager.getInstance().getMeals().get(0).getTitle());
+        _mealTitleTextView.setText(Manager.getInstance().getMeals().get(getMealIndex()).getTitle());
+    }
+
+    private int getMealIndex(){
+        return Manager.getInstance().getMealIndex();
     }
 
 }

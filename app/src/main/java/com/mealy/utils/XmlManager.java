@@ -17,14 +17,14 @@ public class XmlManager {
     private Context _context;
 
     public XmlManager() {
-        _saveFileName = /*Environment.getDataDirectory() + */"/Mealy/mealList";
+        _saveFileName = "mealList.save";
         _context = Manager.getInstance().getContext();
     }
 
     public void saveMeals(){
         try {
-            FileOutputStream fos = getContext().openFileOutput(new File(_saveFileName).getName(), Context.MODE_PRIVATE);
-            //FileOutputStream fos = new FileOutputStream(new File(_saveFileName));
+            File file = new File(getContext().getFilesDir(),_saveFileName);
+            FileOutputStream fos = getContext().openFileOutput(file.getName(), Context.MODE_PRIVATE);
             ObjectOutputStream os = new ObjectOutputStream(fos);
             os.writeObject(Manager.getInstance().getMeals());
             os.close();
@@ -44,7 +44,6 @@ public class XmlManager {
             //Load it if it exists
             try {
                 FileInputStream fis = getContext().openFileInput(_saveFileName);
-                //FileInputStream fis = new FileInputStream(new File(_saveFileName));
                 ObjectInputStream is = new ObjectInputStream(fis);
                 Manager.getInstance().setMeals( (ArrayList<Meal>) is.readObject() );
                 is.close();

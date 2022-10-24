@@ -1,21 +1,17 @@
 package com.mealy;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.mealy.data.Meal;
 import com.mealy.databinding.ActivityMainBinding;
 import com.mealy.utils.Manager;
-import com.mealy.utils.MealListAdapter;
-
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Manager initializations
+        Manager.getInstance().setContext(getApplication().getApplicationContext());
+        Manager.getInstance().getXmlManager().loadMeals();
+
+        //UI
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -34,11 +35,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        //Manager initializations
-        Manager.getInstance().setContext(getApplication().getApplicationContext());
-        //Manager.getInstance().getXmlManager().loadMeals();
-        Manager.getInstance().getMeals().add(new Meal("Meal n°" + Manager.getInstance().getMeals().size()));
     }
 
     @Override
@@ -68,5 +64,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    //FUNCTIONS
+    public void upateTtitle(){
+        binding.toolbar.setTitle(Manager.getInstance().isEditing() ? "Modifier un plat" : "Ajouter un plat");
     }
 }
