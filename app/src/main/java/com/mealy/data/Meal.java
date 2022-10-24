@@ -7,16 +7,20 @@ import java.util.List;
 public class Meal implements Serializable {
     private String _title;
     private List<Ingredient> _ingredients;
-    private List<String> _steps;
+    private List<String> _instruction;
 
     public Meal() {
 
     }
 
-    public Meal(String title, List<Ingredient> ingredients, List<String> steps) {
+    public Meal(String title) {
+        setTitle(title);
+    }
+
+    public Meal(String title, List<Ingredient> ingredients, List<String> instructions) {
         setTitle(title);
         setIngredients(ingredients);
-        setSteps(steps);
+        setInstructions(instructions);
     }
 
     //GETTERS AND SETTERS
@@ -33,11 +37,11 @@ public class Meal implements Serializable {
     public void setIngredients(List<Ingredient> ingredients) {
         this._ingredients = ingredients;
     }
-    public List<String> getSteps() {
-        if(_steps == null){ _steps = new ArrayList<String>(); }
-        return _steps;
+    public List<String> getInstructions() {
+        if(_instruction == null){ _instruction = new ArrayList<String>(); }
+        return _instruction;
     }
-    public void setSteps(List<String> steps) {
-        this._steps = steps;
+    public void setInstructions(List<String> instructions) {
+        this._instruction = instructions;
     }
 }

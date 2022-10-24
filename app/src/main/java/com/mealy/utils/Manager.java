@@ -11,7 +11,7 @@ public class Manager {
     private static Manager _instance;
     private Context _context;
     private XmlManager _xmlManager;
-    private List<Meal> _meals;
+    private ArrayList<Meal> _meals;
 
     private Manager() {
         //getXmlManager().loadMeals();
@@ -38,11 +38,11 @@ public class Manager {
         this._xmlManager = xmlManager;
     }
 
-    public List<Meal> getMeals() {
+    public ArrayList<Meal> getMeals() {
         if(_meals == null){ _meals = new ArrayList<Meal>(); }
         return _meals;
     }
-    public void setMeals(List<Meal> meals) {
+    public void setMeals(ArrayList<Meal> meals) {
         this._meals = meals;
     }
 }

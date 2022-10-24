@@ -11,4 +11,7 @@
     <string name="meal_editor_fragment_add_label">Ajouter un plat</string>
     <string name="meal_editor_fragment_edit_label">Editer un plat</string>
     <string name="save">Sauvegarder</string>
+
+    <!-- Meal item-->
+    <string name="meal_item_title">Meal title</string>
 </resources>

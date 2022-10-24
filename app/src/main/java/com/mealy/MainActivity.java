@@ -9,8 +9,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.mealy.data.Meal;
 import com.mealy.databinding.ActivityMainBinding;
 import com.mealy.utils.Manager;
+import com.mealy.utils.MealListAdapter;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Manager initializations
         Manager.getInstance().setContext(getApplication().getApplicationContext());
-        Manager.getInstance().getXmlManager().loadMeals();
+        //Manager.getInstance().getXmlManager().loadMeals();
+        Manager.getInstance().getMeals().add(new Meal("Meal n°" + Manager.getInstance().getMeals().size()));
     }
 
     @Override

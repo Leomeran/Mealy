@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.List;
+import java.util.ArrayList;
 
 public class XmlManager {
     private String _saveFileName;
@@ -46,7 +46,7 @@ public class XmlManager {
                 FileInputStream fis = getContext().openFileInput(_saveFileName);
                 //FileInputStream fis = new FileInputStream(new File(_saveFileName));
                 ObjectInputStream is = new ObjectInputStream(fis);
-                Manager.getInstance().setMeals( (List<Meal>) is.readObject() );
+                Manager.getInstance().setMeals( (ArrayList<Meal>) is.readObject() );
                 is.close();
                 fis.close();
             } catch (IOException e) {
