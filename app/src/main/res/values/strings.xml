@@ -14,4 +14,6 @@
 
     <!-- Meal item-->
     <string name="meal_item_title">Meal title</string>
+    <string name="edit_button_description"></string>
+    <string name="delete_button_description"></string>
 </resources>
