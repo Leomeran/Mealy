@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.mealy.data.Meal;
 import com.mealy.databinding.FragmentMealEditorBinding;
 import com.mealy.utils.Manager;
 
@@ -38,6 +39,8 @@ public class MealEditorFragment extends Fragment {
         binding.buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Manager.getInstance().getMeals().add(new Meal("Meal n°" + Manager.getInstance().getMeals().size()));
+                Manager.getInstance().getXmlManager().saveMeals();
                 NavHostFragment.findNavController(MealEditorFragment.this).navigate(R.id.action_meal_editor_to_meal_list);
             }
         });

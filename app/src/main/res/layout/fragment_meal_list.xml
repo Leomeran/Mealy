@@ -25,6 +25,8 @@
             android:layout_marginBottom="1dp"
             android:clickable="true"
             android:focusable="true"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
             tools:listitem="@layout/item_meal" />
     </FrameLayout>
 
