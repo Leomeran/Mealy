@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //FUNCTIONS
-    public void upateTtitle(){
+    public void updateTitle(){
         binding.toolbar.setTitle(Manager.getInstance().isEditing() ? "Modifier un plat" : "Ajouter un plat");
     }
 }

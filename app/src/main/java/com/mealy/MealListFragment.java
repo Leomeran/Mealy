@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.mealy.data.Meal;
 import com.mealy.databinding.FragmentMealListBinding;
 import com.mealy.utils.Manager;
 import com.mealy.utils.MealListAdapter;
@@ -36,23 +35,17 @@ public class MealListFragment extends Fragment {
 
         _mealListAdapter = new MealListAdapter(getContext(), Manager.getInstance().getMeals());
         _binding.mealListListview.setAdapter(_mealListAdapter);
+        Manager.getInstance().setMealListAdapter(_mealListAdapter);
+
+        Manager.getInstance().setMealListView(_binding.mealListListview);
+        Manager.getInstance().setMealListFragment(this);
 
         //Bindings
-        _binding.mealListListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Manager.getInstance().setMealIndex(i);
-                Manager.getInstance().setIsEditing(true);
-                ((MainActivity)getActivity()).upateTtitle();
-                goToMealEditor();
-            }
-        });
-
         _binding.addMealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Manager.getInstance().setIsEditing(false);
-                ((MainActivity)getActivity()).upateTtitle();
+                ((MainActivity)getActivity()).updateTitle();
                 goToMealEditor();
             }
         });
@@ -67,6 +60,10 @@ public class MealListFragment extends Fragment {
     //FUNCTIONS
     public void findViewElements(View view){
         _mealListView = (ListView) view.findViewById(R.id.meal_list_listview);
+    }
+
+    public void updateMainActivityTitle() {
+        ((MainActivity)getActivity()).updateTitle();
     }
 
     public void goToMealEditor(){
